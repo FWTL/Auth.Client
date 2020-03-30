@@ -5,7 +5,7 @@ import { required, email, min, confirmed } from "vee-validate/dist/rules";
 
 export default function() {
   const config = {
-    mode: "lazy"
+    mode: "eager"
   };
   configure(config);
 

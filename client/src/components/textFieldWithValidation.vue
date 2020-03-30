@@ -1,6 +1,6 @@
 <template>
   <ValidationProvider :name="$attrs.label.toLowerCase()" :rules="rules" v-slot="{ errors }">
-    <v-text-field v-model="innerValue" :error-messages="errors" v-bind="$attrs" v-on="$listeners"></v-text-field>
+    <v-text-field :class="required" v-model="innerValue" :error-messages="errors" v-bind="$attrs" v-on="$listeners"></v-text-field>
   </ValidationProvider>
 </template>
 
@@ -9,7 +9,7 @@ export default {
   props: {
     rules: {
       type: [Object, String],
-      default: ""
+      default: "required"
     },
     // must be included in props
     value: {
@@ -17,7 +17,8 @@ export default {
     }
   },
   data: () => ({
-    innerValue: ""
+    innerValue: "",
+    required :"",
   }),
   watch: {
     // Handles internal model changes.
@@ -33,6 +34,17 @@ export default {
     if (this.value) {
       this.innerValue = this.value;
     }
+
+    if (this.rules.includes("required")) {
+      this.required = "required"
+    }
   }
 };
 </script>
+
+<style>
+.required label::after {
+  content: " *";
+  color: #df323b;
+}
+</style>
