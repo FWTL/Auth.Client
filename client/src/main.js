@@ -5,13 +5,13 @@ import store from './store'
 import vuetify from './plugins/vuetify';
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
 import textFieldWithValidation from "./components/textFieldWithValidation";
-import { Configuration } from "./clients/auth/index";
+//import { Configuration } from "./clients/auth/index";
 
 import validatorsInit from './validators/init'
 
 Vue.config.productionTip = false
 
-console.log(Configuration.name);
+//console.log(Configuration.name);
 
 Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver);
