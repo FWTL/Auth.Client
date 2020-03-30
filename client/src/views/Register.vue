@@ -10,29 +10,28 @@
               </v-toolbar>
               <v-card-text>
                 <v-form>
-                  <v-text-field
+                  <v-text-field-validation
+                    v-model="email"
                     label="Email"
-                    name="email"
                     prepend-icon="mdi-email"
                     type="email"
-                    :rules="[v => !!v || 'Email is required']"
-                  />
+                    rules="required|email"
+                  ></v-text-field-validation>
 
-                  <v-text-field
-                    id="password"
+                  <v-text-field-validation
+                    v-model="password"
                     label="Password"
-                    name="password"
                     prepend-icon="mdi-lock"
                     type="password"
-                    required
-                  />
+                    rules="required|min:8"
+                  ></v-text-field-validation>
 
-                  <v-text-field
-                    id="repeatPassword"
+                  <v-text-field-validation
+                    v-model="repeatPassword"
                     label="Repeat Password"
-                    name="repeatPassword"
                     prepend-icon="mdi-lock"
                     type="password"
+                    rules="required|confirmed:password,password"
                   />
                 </v-form>
               </v-card-text>
@@ -50,8 +49,10 @@
 
 <script>
 export default {
-  props: {
-    source: String
-  }
+  data: () => ({
+    email: "",
+    password: "",
+    repeatPassword: ""
+  })
 };
 </script>
