@@ -1,10 +1,11 @@
 <template>
   <v-app class="accent">
     <v-content>
-      <v-container class="fill-height" color="primary" fluid>
+      <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="4">
             <v-card class="elevation-12">
+              <processing-overlay></processing-overlay>
               <ValidationObserver v-slot="{ invalid }">
                 <v-toolbar color="primary" dark flat>
                   <v-toolbar-title>Registration</v-toolbar-title>
@@ -28,6 +29,7 @@
                     ></v-text-field-validation>
 
                     <v-text-field-validation
+                      mode="aggresive"
                       v-model="repeatPassword"
                       label="Repeat Password"
                       prepend-icon="mdi-lock"
@@ -50,6 +52,8 @@
 </template>
 
 <script>
+import { UsersApi, RegisterUser } from "../api/auth/src/index";
+
 export default {
   data: () => ({
     email: "",
@@ -57,8 +61,14 @@ export default {
     repeatPassword: ""
   }),
   methods: {
-    onSubmit () {
-      alert(this.email + " "  + this.password + " " + this.repeatPassword);
+    onSubmit() {
+      var user = new RegisterUser();
+      user.email = this.email;
+      user.password = this.password;
+      user.repeatPassword = this.repeatPassword;
+
+      var userService = new UsersApi();
+      userService.apiUsersPost({ registerUser: user });
     }
   }
 };
