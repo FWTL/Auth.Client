@@ -1,17 +1,25 @@
 <template>
-  <ValidationProvider :name="$attrs.label.toLowerCase().split(' ').join('')" :rules="rules" v-slot="{ errors }">
-    <v-text-field :class="required" v-model="innerValue" :error-messages="errors" v-bind="$attrs" v-on="$listeners"></v-text-field>
+  <ValidationProvider v-slot="{ errors }" :name="$attrs.label.toLowerCase().split(' ').join('')" :rules="rules">
+    <v-text-field
+      v-model="innerValue"
+      :class="required"
+      :error-messages="errors"
+      v-bind="$attrs"
+      v-on="$listeners"
+    />
   </ValidationProvider>
 </template>
 
 <script>
 export default {
+  name: "VTextFieldValidation",
   props: {
     rules: {
       type: [Object, String],
       default: "required"
     },
     // must be included in props
+    //eslint-disable-next-line vue/require-default-prop
     value: {
       type: null
     }

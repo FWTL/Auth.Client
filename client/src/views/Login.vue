@@ -10,7 +10,12 @@
               </v-toolbar>
               <v-card-text>
                 <v-form>
-                  <v-text-field label="Email" name="email" prepend-icon="mdi-email" type="email" />
+                  <v-text-field
+                    label="Email"
+                    name="email"
+                    prepend-icon="mdi-email"
+                    type="email"
+                  />
 
                   <v-text-field
                     id="password"
