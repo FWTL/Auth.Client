@@ -1,44 +1,26 @@
 <template>
   <v-app class="accent">
     <v-content>
-      <v-container class="fill-height" color="primary" fluid>
+      <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="4">
-            <v-card class="elevation-12">
-              <v-toolbar flat>
-                <v-toolbar-title>Registration form</v-toolbar-title>
-              </v-toolbar>
-              <v-card-text>
-                <v-form>
-                  <v-text-field
-                    label="Email"
-                    name="email"
-                    prepend-icon="mdi-email"
-                    type="email"
-                  />
+            <v-card-form title="Login" save-button-title="Login">
+              <v-text-field-validation
+                v-model="email"
+                label="Email"
+                prepend-icon="mdi-email"
+                type="email"
+                rules="required|email"
+              />
 
-                  <v-text-field
-                    id="password"
-                    label="Password"
-                    name="password"
-                    prepend-icon="mdi-lock"
-                    type="password"
-                  />
-
-                  <v-text-field
-                    id="repeatPassword"
-                    label="Repeat Password"
-                    name="repeatPassword"
-                    prepend-icon="mdi-lock"
-                    type="password"
-                  />
-                </v-form>
-              </v-card-text>
-              <v-card-actions>
-                <v-spacer />
-                <v-btn>Register</v-btn>
-              </v-card-actions>
-            </v-card>
+              <v-text-field-validation
+                v-model="password"
+                label="Password"
+                prepend-icon="mdi-lock"
+                type="password"
+                rules="required|min:8"
+              />
+            </v-card-form>
           </v-col>
         </v-row>
       </v-container>
@@ -47,9 +29,5 @@
 </template>
 
 <script>
-export default {
-  props: {
-    source: String
-  }
-};
+export default {};
 </script>
