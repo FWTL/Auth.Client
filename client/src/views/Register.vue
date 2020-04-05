@@ -6,7 +6,7 @@
           <v-col cols="12" sm="8" md="4">
             <v-card class="elevation-12">
               <processing-overlay></processing-overlay>
-              <ValidationObserver v-slot="{ invalid }">
+              <ValidationObserver ref="form" v-slot="{  }">
                 <v-toolbar color="primary" dark flat>
                   <v-toolbar-title>Registration</v-toolbar-title>
                 </v-toolbar>
@@ -29,7 +29,6 @@
                     ></v-text-field-validation>
 
                     <v-text-field-validation
-                      mode="aggresive"
                       v-model="repeatPassword"
                       label="Repeat Password"
                       prepend-icon="mdi-lock"
@@ -40,7 +39,7 @@
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer />
-                  <v-btn color="primary" :disabled="invalid" @click="onSubmit">Register</v-btn>
+                  <v-btn color="primary" @click="onSubmit">Register</v-btn>
                 </v-card-actions>
               </ValidationObserver>
             </v-card>
@@ -53,6 +52,7 @@
 
 <script>
 import { UsersApi, RegisterUser } from "../api/auth/src/index";
+import store from "../store/index";
 
 export default {
   data: () => ({
@@ -68,7 +68,15 @@ export default {
       user.repeatPassword = this.repeatPassword;
 
       var userService = new UsersApi();
-      userService.apiUsersPost({ registerUser: user });
+      var form = this.$refs.form;
+
+      this.$decorateResponse(
+        callback => userService.apiUsersPost({ registerUser: user }, callback),
+        data => {
+          console.log(data);
+        },
+        this.$refs.form
+      );
     }
   }
 };

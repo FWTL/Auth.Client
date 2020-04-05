@@ -7,9 +7,9 @@ import { ValidationProvider, ValidationObserver } from "vee-validate";
 import textFieldWithValidation from "./components/textFieldWithValidation";
 import processingOverlay from "./components/processingOverlay";
 import authApiInit from "./plugins/api/auth/index";
-import validatorsInit from "./plugins/validators";
+import ValidationPlugin from "./plugins/validators";
 
-validatorsInit();
+Vue.use(ValidationPlugin);
 authApiInit("http://localhost:5000");
 
 Vue.config.productionTip = false;

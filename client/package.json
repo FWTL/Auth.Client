@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "generate": "docker run --rm --network=\"host\" -v %cd%/src:/local openapitools/openapi-generator-cli generate -i http://host.docker.internal:5000/swagger/v1/swagger.json -g javascript -o /local/clients/auth"
+    "generate": "docker run --rm --network=\"host\" -v %cd%/src:/local openapitools/openapi-generator-cli generate -i http://host.docker.internal:5000/swagger/v1/swagger.json -g javascript --additional-properties usePromises=false -o /local/api/auth"
   },
   "dependencies": {
     "core-js": "^3.6.4",

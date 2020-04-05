@@ -7,13 +7,6 @@ export default function init(basePath) {
   function response(req) {
     req.on("response", function(res) {
       store.state.processing = false;
-      
-      if (res.status === 400) {
-        var response = JSON.parse(res.xhr.response);
-        Object.entries(response).forEach(function([key, value]) {
-          store.state.errors.push(...value);
-        });
-      }
     });
   }
 

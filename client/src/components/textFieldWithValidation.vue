@@ -1,5 +1,5 @@
 <template>
-  <ValidationProvider :name="$attrs.label.toLowerCase()" :rules="rules" v-slot="{ errors }">
+  <ValidationProvider :name="$attrs.label.toLowerCase().split(' ').join('')" :rules="rules" v-slot="{ errors }">
     <v-text-field :class="required" v-model="innerValue" :error-messages="errors" v-bind="$attrs" v-on="$listeners"></v-text-field>
   </ValidationProvider>
 </template>
