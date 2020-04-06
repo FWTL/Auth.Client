@@ -4,7 +4,7 @@
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="4">
-            <v-card-form title="Login" save-button-title="Login">
+            <v-card-form title="Login" save-button-title="Login" @click="onSubmit">
               <v-text-field-validation
                 v-model="email"
                 label="Email"
@@ -29,5 +29,15 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data: () => ({
+    email: "",
+    password: ""
+  }),
+  methods: {
+    onSubmit() {
+      
+    }
+  },
+};
 </script>
