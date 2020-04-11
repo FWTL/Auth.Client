@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Register from '../views/Register.vue'
-import Login from '../views/Login.vue'
 import Dashboard from '../views/Dashboard.vue'
 
 Vue.use(VueRouter)
@@ -10,12 +8,14 @@ const routes = [
   {
     path: '/register',
     name: 'Register',
-    component: Register
+    component: () => import('@/views/Register.vue'),
+    meta: { layout: "empty" },
   },
   {
     path: '/login',
     name: 'Login',
-    component: () => import('@/views/Login.vue')
+    component: () => import('@/views/Login.vue'),
+    meta: { layout: "empty" },
   },
   {
     path: '/',

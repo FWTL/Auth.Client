@@ -12,6 +12,12 @@ import VOverlayProcessing from "./components/v-overlay-processing";
 import VTextFieldValidation from "./components/v-text-field-validation";
 import VCardForm from "./components/v-card-form";
 
+import Empty from "./components/layouts/empty-layout.vue";
+Vue.component("empty-layout", Empty);
+
+import Default from "./components/layouts/default-layout.vue";
+Vue.component("default-layout", Default);
+
 Vue.use(ValidationPlugin);
 authApiInit("http://localhost:5000");
 
