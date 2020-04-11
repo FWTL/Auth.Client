@@ -1,5 +1,5 @@
-import { ApiClient } from "../../../api/auth/src/index";
-import store from "../../../store/index";
+import { ApiClient } from "@/api/auth/src/index";
+import store from "@/store/index";
 
 export default function init(basePath) {
   ApiClient.instance.basePath = basePath;

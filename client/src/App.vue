@@ -1,13 +1,13 @@
 <template>
   <v-app>
-    <v-content>
+    <component :is="layout">
       <router-view />
-    </v-content>
+    </component>
   </v-app>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: "App"
 };
 </script>

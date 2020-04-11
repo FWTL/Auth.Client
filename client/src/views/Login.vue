@@ -1,6 +1,5 @@
 <template>
-  <v-app class="accent">
-    <v-content>
+    <v-content class="accent">
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="4">
@@ -25,19 +24,31 @@
         </v-row>
       </v-container>
     </v-content>
-  </v-app>
 </template>
 
 <script>
+import client from "@/services/oauthService";
+import store from "@/store/index";
+
 export default {
   data: () => ({
     email: "",
     password: ""
   }),
   methods: {
-    onSubmit() {
-      
+    onSubmit(event, form) {
+      const router = this.$router;
+
+      store.state.processing = true;
+      client.ownerPassword(this.email, this.password).then(token => {
+        store.state.processing = false;
+        if (token.isValid) {
+          router.push("/");
+        } else {
+          store.state.errors.push(token.description);
+        }
+      });
     }
-  },
+  }
 };
 </script>

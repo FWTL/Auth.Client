@@ -6,7 +6,7 @@ import vuetify from "./plugins/vuetify";
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 import ValidationPlugin from "./plugins/validators";
 
-import authApiInit from "./plugins/api/auth/index";
+import authApiInit from "./services/authService";
 
 import VOverlayProcessing from "./components/v-overlay-processing";
 import VTextFieldValidation from "./components/v-text-field-validation";
@@ -27,5 +27,5 @@ new Vue({
   router,
   store,
   vuetify,
-  render: (h) => h(App),
+  render: h => h(App)
 }).$mount("#app");
