@@ -4,7 +4,7 @@
       <v-col cols="12" sm="8" md="4">
         <v-card-form title="Login" save-button-title="Login" @click="onSubmit">
           <v-text-field-validation
-            v-model="email"
+            v-model="userName"
             label="Email"
             prepend-icon="mdi-email"
             type="email"
@@ -25,27 +25,20 @@
 </template>
 
 <script>
-import client from "@/services/oauthService";
-import store from "@/store/index";
-
 export default {
   data: () => ({
-    email: "",
+    userName: "",
     password: ""
   }),
   methods: {
     onSubmit(event, form) {
-      const router = this.$router;
-
-      store.state.processing = true;
-      client.ownerPassword(this.email, this.password).then(token => {
-        store.state.processing = false;
-        if (token.isValid) {
-          router.push("/");
-        } else {
-          store.state.errors.push(token.description);
-        }
-      });
+      this.$store
+        .dispatch("getToken", {
+          userName: this.userName,
+          password: this.password,
+          form
+        })
+        .then(() => this.$router.push("/dashboard"));
     }
   }
 };

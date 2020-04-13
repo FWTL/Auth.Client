@@ -4,9 +4,7 @@ import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
 import { ValidationProvider, ValidationObserver } from "vee-validate";
-import ValidationPlugin from "./plugins/validators";
-
-import authApiInit from "./services/authService";
+import validators from "./plugins/validators";
 
 import VOverlayProcessing from "./components/v-overlay-processing";
 import VTextFieldValidation from "./components/v-text-field-validation";
@@ -18,8 +16,7 @@ Vue.component("empty-layout", Empty);
 import Default from "./components/layouts/default-layout.vue";
 Vue.component("default-layout", Default);
 
-Vue.use(ValidationPlugin);
-authApiInit("http://localhost:5000");
+validators();
 
 Vue.config.productionTip = false;
 

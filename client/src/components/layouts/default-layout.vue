@@ -5,13 +5,11 @@
 
       <v-spacer></v-spacer>
 
-      <div class="mr-5">
-        <v-avatar class="mr-3">
-          <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
-        </v-avatar>
+      <v-avatar class="mr-3">
+        <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
+      </v-avatar>
 
-        <span class="subheading">Andrzej Golaszewski</span>
-      </div>
+      <div class="subheading mr-5">Andrzej Golaszewski</div>
 
       <v-toolbar-items>
         <v-divider inset vertical></v-divider>
