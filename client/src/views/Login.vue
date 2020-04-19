@@ -38,7 +38,8 @@ export default {
           password: this.password,
           form
         })
-        .then(() => this.$router.push("/dashboard"));
+        .then(() => this.$router.push("/dashboard"))
+        .catch(error => {});
     }
   }
 };

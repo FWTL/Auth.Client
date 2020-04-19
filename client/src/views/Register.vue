@@ -43,15 +43,18 @@ export default {
     repeatPassword: ""
   }),
   methods: {
-    onSubmit(event, form) {
+    async onSubmit(event, form) {
       var registerUser = new RegisterUser();
       registerUser.email = this.email;
       registerUser.password = this.password;
       registerUser.repeatPassword = this.repeatPassword;
 
-      this.$store
+      await this.$store
         .dispatch("registerUser", { registerUser, form })
-        .then(() => this.$router.push("/login"));
+        .then(response => {
+          this.$router.push("/login");
+        })
+        .catch(error => {});
     }
   }
 };

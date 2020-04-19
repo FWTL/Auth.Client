@@ -3,13 +3,19 @@ import store from "@/store/index";
 
 function response(req) {
   req.on("response", function(res) {
-    store.commit('PROCESSING_STARTED')
+    store.commit("PROCESSING_FINISHED");
   });
 }
 
 function request(req) {
   req.on("request", function() {
-    store.commit('PROCESSING_FINISHED');
+    if (store.getters.isAuthenticated) {
+      if (store.state.accessToken.isExpired) {
+        store.dispatch("refreshToken");
+      }
+      request.set({ Authorization: store.token.accessToken });
+    }
+    store.commit("PROCESSING_STARTED");
   });
 }
 

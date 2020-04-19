@@ -9,7 +9,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     processing: false,
-    errors: []
+    errors: [],
   },
   mutations: {
     PROCESSING_STARTED(state) {
@@ -19,7 +19,6 @@ export default new Vuex.Store({
       state.processing = false;
     },
     ERROR_HAS_OCCURED(state, payload) {
-      console.log(payload);
       const response = payload.response;
       const form = payload.form;
 
@@ -29,17 +28,12 @@ export default new Vuex.Store({
         return;
       }
 
-      if (response.status === 500) {
-        state.errors.push("Unexpected error");
-        return;
-      }
-
       if (response.status === 400) {
         var errors = response.body;
         Object.entries(errors).forEach(function([key, value]) {
           if ([key] in form._data.refs) {
             form.setErrors({
-              [key]: value
+              [key]: value,
             });
           } else {
             state.errors.push(...value);
@@ -47,11 +41,14 @@ export default new Vuex.Store({
         });
         return;
       }
-    }
+
+      state.errors.push("Unexpected error");
+      return;
+    },
   },
   actions: {},
   modules: {
     user,
-    token
-  }
+    token,
+  },
 });
