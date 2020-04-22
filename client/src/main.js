@@ -8,7 +8,7 @@ import validators from "./plugins/validators";
 
 import VOverlayProcessing from "./components/v-overlay-processing";
 import VTextFieldValidation from "./components/v-text-field-validation";
-import VCardForm from "./components/v-card-form";
+import VCardFormNavigation from "./components/v-card-form-navigation";
 
 import Empty from "./components/layouts/empty-layout.vue";
 Vue.component("empty-layout", Empty);
@@ -24,7 +24,7 @@ Vue.component("ValidationProvider", ValidationProvider);
 Vue.component("ValidationObserver", ValidationObserver);
 Vue.component("v-overlay-processing", VOverlayProcessing);
 Vue.component("v-text-field-validation", VTextFieldValidation);
-Vue.component("v-card-form", VCardForm);
+Vue.component("v-card-form-navigation", VCardFormNavigation);
 
 new Vue({
   router,

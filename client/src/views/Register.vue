@@ -2,7 +2,13 @@
   <v-container class="fill-height" fluid>
     <v-row align="center" justify="center">
       <v-col cols="12" sm="8" md="4">
-        <v-card-form title="Register" save-button-title="Register" @click="onSubmit">
+        <v-card-form-navigation
+          title="Register"
+          save-button-title="Register"
+          navigation-url="/login"
+          navigation-text="Already have an account? Sign in"
+          @click="onSubmit"
+        >
           <v-text-field-validation
             v-model="email"
             label="Email"
@@ -26,7 +32,7 @@
             type="password"
             rules="required|confirmed:password,password"
           />
-        </v-card-form>
+        </v-card-form-navigation>
       </v-col>
     </v-row>
   </v-container>

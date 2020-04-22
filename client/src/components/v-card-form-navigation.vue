@@ -11,6 +11,9 @@
         </v-form>
       </v-card-text>
       <v-card-actions>
+        <v-btn text small>
+          <router-link :to="navigationUrl">{{ navigationText }}</router-link>
+        </v-btn>
         <v-spacer />
         <v-btn color="primary" @click="handleSubmit(onClick)">{{ saveButtonTitle }}</v-btn>
       </v-card-actions>
@@ -22,6 +25,14 @@
 export default {
   props: {
     title: {
+      type: String,
+      default: ""
+    },
+    navigationUrl: {
+      type: String,
+      default: ""
+    },
+    navigationText: {
       type: String,
       default: ""
     },

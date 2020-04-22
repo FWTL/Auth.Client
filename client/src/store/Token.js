@@ -43,6 +43,9 @@ const mutations = {
   TOKEN_AQUIRED(state, token) {
     state.accessToken = true;
   },
+  USER_LOGGED_OUT(state) {
+    state.accessToken = null;
+  },
 };
 
 export default {
