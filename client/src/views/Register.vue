@@ -55,12 +55,10 @@ export default {
       registerUser.password = this.password;
       registerUser.repeatPassword = this.repeatPassword;
 
-      await this.$store
-        .dispatch("registerUser", { registerUser, form })
-        .then(response => {
-          this.$router.push("/login");
-        })
-        .catch(error => {});
+      try {
+        await this.$store.dispatch("user/register", { registerUser, form });
+        this.$router.push("/login");
+      } catch {}
     }
   }
 };

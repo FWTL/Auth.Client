@@ -5,11 +5,7 @@
 
       <v-spacer />
 
-      <v-avatar class="mr-3">
-        <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
-      </v-avatar>
-
-      <div class="subheading mr-5">Andrzej Golaszewski</div>
+      <VPanelUser></VPanelUser>
 
       <v-toolbar-items>
         <v-divider inset vertical />
@@ -42,8 +38,12 @@
 
 <script>
 import moment from "moment";
+import VPanelUser from "@/components/panels/v-panel-user";
 
 export default {
+  components: {
+    VPanelUser
+  },
   data: () => ({
     year: moment().year()
   })

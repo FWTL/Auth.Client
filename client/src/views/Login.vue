@@ -37,15 +37,15 @@ export default {
     password: ""
   }),
   methods: {
-    onSubmit(event, form) {
-      this.$store
-        .dispatch("getToken", {
+    async onSubmit(event, form) {
+      try {
+        await this.$store.dispatch("getToken", {
           userName: this.userName,
           password: this.password,
           form
-        })
-        .then(() => this.$router.push("/dashboard"))
-        .catch(error => {});
+        });
+        this.$router.push("/dashboard");
+      } catch {}
     }
   }
 };

@@ -31,7 +31,7 @@ export default new Vuex.Store({
       if (response.status === 400) {
         var errors = response.body;
         Object.entries(errors).forEach(function([key, value]) {
-          if ([key] in form._data.refs) {
+          if (form && [key] in form._data.refs) {
             form.setErrors({
               [key]: value,
             });

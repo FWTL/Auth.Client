@@ -1,21 +1,37 @@
 import UserService from "@/services/UserService";
 
 const actions = {
-  registerUser({ commit }, payload) {
-    return UserService.apiUsersPost({
+  register({ commit }, payload) {
+    return UserService.usersPost({
       registerUser: payload.registerUser,
     }).catch((error) => {
-      commit("ERROR_HAS_OCCURED", {
-        response: error.response,
-        form: payload.form,
-      });
+      commit(
+        "ERROR_HAS_OCCURED",
+        {
+          response: error.response,
+          form: payload.form,
+        },
+        { root: true }
+      );
       return Promise.reject(error.response);
     });
+  },
+  usersMeGet({ state }) {
+    return UserService.usersMeGet()
+      .then((model) => {
+        state.me = model;
+      })
+      .catch((error) => {
+        return Promise.reject(error.response);
+      });
   },
 };
 
 export default {
-  state: {},
+  namespaced: true,
+  state: {
+    me: null,
+  },
   mutations: {},
   actions,
   getters: {},

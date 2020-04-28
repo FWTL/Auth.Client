@@ -17,6 +17,7 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-unused-vars' : 'off',
+    'no-empty' : 'off',
     "vue/component-name-in-template-casing": "error",
     "vue/max-attributes-per-line": ["warn", {
       "singleline": 3,

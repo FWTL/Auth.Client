@@ -5,10 +5,10 @@ const actions = {
     commit("PROCESSING_STARTED");
 
     return TokenService.ownerPassword(payload.userName, payload.password)
-      .then((token) => {
+      .then((accessToken) => {
         commit("PROCESSING_FINISHED");
-        commit("TOKEN_AQUIRED", { token });
-        return token;
+        commit("TOKEN_AQUIRED", accessToken);
+        return accessToken;
       })
       .catch((invalidGrant) => {
         commit("PROCESSING_FINISHED");
@@ -19,8 +19,8 @@ const actions = {
         return Promise.reject(invalidGrant);
       });
   },
-  refreshToken({ commit, state }) {
-    return TokenService.refreshToken(state.accessToken.token)
+  refreshToken({ commit, getters }) {
+    return TokenService.refreshToken(getters.refreshToken)
       .then((token) => {
         commit("TOKEN_AQUIRED", { token });
         return token;
@@ -29,26 +29,32 @@ const actions = {
         return Promise.reject(invalidGrant);
       });
   },
+  logOut({ commit }) {
+    commit("USER_LOGGED_OUT");
+  },
 };
 
 const state = {
-  accessToken: null,
+  it: null,
 };
 
 const getters = {
-  isAuthenticated: (state) => !!state.accessToken,
+  isAuthenticated: (state) => !!state.it && !state.it.isExpired,
+  accessToken: (state) => state.it.token,
+  refreshToken: (state) => state.it.refreshToken,
 };
 
 const mutations = {
-  TOKEN_AQUIRED(state, token) {
-    state.accessToken = true;
+  TOKEN_AQUIRED(state, accessToken) {
+    state.it = accessToken;
   },
   USER_LOGGED_OUT(state) {
-    state.accessToken = null;
+    state.it = null;
   },
 };
 
 export default {
+  namespaced: true,
   state,
   mutations,
   actions,
