@@ -2,11 +2,11 @@ import { ApiClient, UsersApi } from "@/api/user/src/index";
 import store from "@/store/index";
 
 function setAuth(req) {
-  //console.log(store);
-  console.log(store.getters);
-  // if (store.getters.token.isAuthenticated) {
-  //   req.set("Authorization", store.getters.token.accessToken);
-  // }
+  console.log(store.getters["token/isAuthenticated"]);
+  if (store.getters["token/isAuthenticated"] === true) {
+    console.log(store.getters["token/accessToken"]);
+    req.set("Authorization", store.getters["token/accessToken"]);
+  }
 }
 
 function response(req) {
@@ -16,7 +16,7 @@ function response(req) {
 }
 
 function request(req) {
-  req.on("request", async function() {
+  req.on("request", function() {
     store.commit("PROCESSING_STARTED");
   });
 }

@@ -1,24 +1,28 @@
 import UserService from "@/services/UserService";
 
+const handlerBadRequest = function(error, form, commit) {
+  commit(
+    "ERROR_HAS_OCCURED",
+    {
+      response: error.response,
+      form,
+    },
+    { root: true }
+  );
+  return Promise.reject(error.response);
+};
+
 const actions = {
   register({ commit }, payload) {
+    const { registerUser, form } = payload;
     return UserService.usersPost({
-      registerUser: payload.registerUser,
-    }).catch((error) => {
-      commit(
-        "ERROR_HAS_OCCURED",
-        {
-          response: error.response,
-          form: payload.form,
-        },
-        { root: true }
-      );
-      return Promise.reject(error.response);
-    });
+      registerUser,
+    }).catch((error) => handlerBadRequest(error, form, commit));
   },
   usersMeGet({ state }) {
     return UserService.usersMeGet()
       .then((model) => {
+        console.log(model);
         state.me = model;
       })
       .catch((error) => {

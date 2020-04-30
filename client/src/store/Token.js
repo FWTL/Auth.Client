@@ -1,25 +1,28 @@
 import TokenService from "@/services/TokenService";
 
 const actions = {
-  getToken({ commit }, payload) {
-    commit("PROCESSING_STARTED");
-
+  get({ commit }, payload) {
+    commit("PROCESSING_STARTED", null, { root: true });
     return TokenService.ownerPassword(payload.userName, payload.password)
       .then((accessToken) => {
-        commit("PROCESSING_FINISHED");
+        commit("PROCESSING_FINISHED", { root: true });
         commit("TOKEN_AQUIRED", accessToken);
         return accessToken;
       })
       .catch((invalidGrant) => {
-        commit("PROCESSING_FINISHED");
-        commit("ERROR_HAS_OCCURED", {
-          response: invalidGrant,
-          form: payload.form,
-        });
+        commit("PROCESSING_FINISHED", { root: true });
+        commit(
+          "ERROR_HAS_OCCURED",
+          {
+            response: invalidGrant,
+            form: payload.form,
+          },
+          { root: true }
+        );
         return Promise.reject(invalidGrant);
       });
   },
-  refreshToken({ commit, getters }) {
+  refresh({ commit, getters }) {
     return TokenService.refreshToken(getters.refreshToken)
       .then((token) => {
         commit("TOKEN_AQUIRED", { token });
@@ -35,7 +38,7 @@ const actions = {
 };
 
 const state = {
-  it: null,
+  it: window.localStorage.getItem("token"),
 };
 
 const getters = {
@@ -47,6 +50,7 @@ const getters = {
 const mutations = {
   TOKEN_AQUIRED(state, accessToken) {
     state.it = accessToken;
+    window.localStorage.setItem("token", JSON.stringify(accessToken));
   },
   USER_LOGGED_OUT(state) {
     state.it = null;

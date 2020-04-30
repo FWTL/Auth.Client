@@ -4,10 +4,10 @@
       <img :src="avatarUrl" alt="John" />
     </v-avatar>
     <v-avatar v-else :color="avatarColor" class="mr-3">
-      <span class="white--text headline">{{usernameAbr}}</span>
+      <span class="white--text headline">{{ usernameAbr }}</span>
     </v-avatar>
 
-    <div class="subheading mr-5">{{userName}}</div>
+    <div class="subheading mr-5">{{ userName }}</div>
   </div>
 </template>
 
@@ -38,7 +38,8 @@ export default {
     }
   },
   async created() {
-    await this.$store.dispatch("usersMeGet").catch(error => console.log(error));
+    await this.$store.dispatch("user/usersMeGet");
+    console.log(this.$store.state.user.me);
   }
 };
 

@@ -38,14 +38,12 @@ export default {
   }),
   methods: {
     async onSubmit(event, form) {
-      try {
-        await this.$store.dispatch("getToken", {
-          userName: this.userName,
-          password: this.password,
-          form
-        });
-        this.$router.push("/dashboard");
-      } catch {}
+      await this.$store.dispatch("token/get", {
+        userName: this.userName,
+        password: this.password,
+        form
+      });
+      this.$router.push("/dashboard");
     }
   }
 };
