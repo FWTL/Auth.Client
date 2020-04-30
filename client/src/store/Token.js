@@ -38,7 +38,7 @@ const actions = {
 };
 
 const state = {
-  it: window.localStorage.getItem("token"),
+  it: JSON.parse(window.localStorage.getItem("token") || ""),
 };
 
 const getters = {

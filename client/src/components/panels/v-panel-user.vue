@@ -39,7 +39,7 @@ export default {
   },
   async created() {
     await this.$store.dispatch("user/usersMeGet");
-    console.log(this.$store.state.user.me);
+    this.userName = this.$store.state.user.me.name;
   }
 };
 

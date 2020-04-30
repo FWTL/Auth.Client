@@ -21,9 +21,8 @@ const actions = {
   },
   usersMeGet({ state }) {
     return UserService.usersMeGet()
-      .then((model) => {
-        console.log(model);
-        state.me = model;
+      .then((res) => {
+        state.me = res.body
       })
       .catch((error) => {
         return Promise.reject(error.response);
