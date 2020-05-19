@@ -18,7 +18,7 @@ export default new Vuex.Store({
     PROCESSING_FINISHED(state) {
       state.processing = false;
     },
-    ERROR_HAS_OCCURED(state, payload) {
+    ERROR_HAS_OCCURRED(state, payload) {
       const response = payload.response;
       const form = payload.form;
 

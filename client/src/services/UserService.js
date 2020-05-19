@@ -4,8 +4,7 @@ import store from "@/store/index";
 function setAuth(req) {
   console.log(store.getters["token/isAuthenticated"]);
   if (store.getters["token/isAuthenticated"] === true) {
-    console.log(store.getters["token/accessToken"]);
-    req.set("Authorization", store.getters["token/accessToken"]);
+    req.set("Authorization", "Bearer " + store.state.token.it.accessToken);
   }
 }
 

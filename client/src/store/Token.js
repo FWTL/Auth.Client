@@ -6,13 +6,13 @@ const actions = {
     return TokenService.ownerPassword(payload.userName, payload.password)
       .then((accessToken) => {
         commit("PROCESSING_FINISHED", { root: true });
-        commit("TOKEN_AQUIRED", accessToken);
+        commit("TOKEN_ACQUIRED", accessToken);
         return accessToken;
       })
       .catch((invalidGrant) => {
         commit("PROCESSING_FINISHED", { root: true });
         commit(
-          "ERROR_HAS_OCCURED",
+          "ERROR_HAS_OCCURRED",
           {
             response: invalidGrant,
             form: payload.form,
@@ -25,7 +25,7 @@ const actions = {
   refresh({ commit, getters }) {
     return TokenService.refreshToken(getters.refreshToken)
       .then((token) => {
-        commit("TOKEN_AQUIRED", { token });
+        commit("TOKEN_ACQUIRED", { token });
         return token;
       })
       .catch((invalidGrant) => {
@@ -42,13 +42,11 @@ const state = {
 };
 
 const getters = {
-  isAuthenticated: (state) => !!state.it && !state.it.isExpired,
-  accessToken: (state) => state.it.token,
-  refreshToken: (state) => state.it.refreshToken,
+  isAuthenticated: (state) => true
 };
 
 const mutations = {
-  TOKEN_AQUIRED(state, accessToken) {
+  TOKEN_ACQUIRED(state, accessToken) {
     state.it = accessToken;
     window.localStorage.setItem("token", JSON.stringify(accessToken));
   },

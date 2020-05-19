@@ -2,7 +2,7 @@ import UserService from "@/services/UserService";
 
 const handlerBadRequest = function(error, form, commit) {
   commit(
-    "ERROR_HAS_OCCURED",
+    "ERROR_HAS_OCCURRED",
     {
       response: error.response,
       form,
