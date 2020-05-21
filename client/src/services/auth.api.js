@@ -1,4 +1,4 @@
-import Client from "@/api/token/index";
+import Client from "@/api/auth/index";
 
 var oauthClient = new Client({
   baseUrl: "http://localhost:5000",

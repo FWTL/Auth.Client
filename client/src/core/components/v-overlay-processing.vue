@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-fade-transition>
-      <v-overlay v-if="$store.state.processing" absolute color="#333">
+      <v-overlay v-if="$store.state.processing" absolute color="fade">
         <v-progress-circular
           color="primary"
           :size="70"
@@ -13,7 +13,7 @@
     </v-fade-transition>
 
     <v-fade-transition>
-      <v-overlay v-if="$store.state.errors.length" absolute color="#333">
+      <v-overlay v-if="$store.state.errors.length" absolute color="fade">
         <v-alert v-for="error in $store.state.errors" :key="error" type="error">
           {{ error }}
         </v-alert>

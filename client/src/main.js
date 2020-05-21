@@ -1,22 +1,22 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-import store from "./store";
+import store from "./store/index";
 import vuetify from "./plugins/vuetify";
 import { ValidationProvider, ValidationObserver } from "vee-validate";
-import validators from "./plugins/validators";
+import install from "./plugins/validators";
 
-import VOverlayProcessing from "./components/v-overlay-processing";
-import VTextFieldValidation from "./components/v-text-field-validation";
-import VCardFormNavigation from "./components/v-card-form-navigation";
+import VOverlayProcessing from "./core/components/v-overlay-processing";
+import VTextFieldValidation from "./core/components/v-text-field-validation";
+import VCardFormNavigation from "./core/components/v-card-form-navigation";
 
-import Empty from "./components/layouts/empty-layout.vue";
+import Empty from "./core/layouts/empty-layout.vue";
 Vue.component("empty-layout", Empty);
 
-import Default from "./components/layouts/default-layout.vue";
+import Default from "./core/layouts/default-layout.vue";
 Vue.component("default-layout", Default);
 
-validators();
+install();
 
 Vue.config.productionTip = false;
 

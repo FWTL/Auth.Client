@@ -10,13 +10,13 @@ function setAuth(req) {
 
 function response(req) {
   req.on("response", function(res) {
-    store.commit("PROCESSING_FINISHED");
+    store.commit("LOADING_FINISHED");
   });
 }
 
 function request(req) {
   req.on("request", function() {
-    store.commit("PROCESSING_STARTED");
+    store.commit("LOADING_STARTED");
   });
 }
 

@@ -3,7 +3,7 @@ import { extend, localize } from "vee-validate";
 import en from "vee-validate/dist/locale/en.json";
 import { required, email, min, confirmed } from "vee-validate/dist/rules";
 
-function initDefaults() {
+function install() {
   const config = {
     mode: "eager"
   };
@@ -29,4 +29,4 @@ function initDefaults() {
   });
 }
 
-export default initDefaults;
+export default install;

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --port 8081",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "generate": "docker run --rm --network=\"host\" -v %cd%/src:/local openapitools/openapi-generator-cli generate -i http://host.docker.internal:5000/swagger/v1/swagger.json -g javascript --additional-properties usePromises=false -o /local/api/user"

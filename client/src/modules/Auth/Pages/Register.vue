@@ -40,7 +40,6 @@
 
 <script>
 import { RegisterUser } from "@/api/user/src/index";
-import store from "../store/index";
 
 export default {
   data: () => ({
@@ -55,10 +54,8 @@ export default {
       registerUser.password = this.password;
       registerUser.repeatPassword = this.repeatPassword;
 
-      try {
-        await this.$store.dispatch("user/register", { registerUser, form });
-        this.$router.push("/login");
-      } catch (error) {}
+      await this.$store.dispatch("auth/register", { registerUser, form });
+      this.$router.push("/login");
     }
   }
 };

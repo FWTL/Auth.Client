@@ -5,8 +5,6 @@
 
       <v-spacer />
 
-      <VPanelUser></VPanelUser>
-
       <v-toolbar-items>
         <v-divider inset vertical />
 
@@ -28,7 +26,7 @@
       </v-btn>
     </v-app-bar>
 
-    <slot></slot>
+    <slot />
 
     <v-footer color="primary" app dark>
       <span>&copy; {{ year }}</span>
@@ -38,12 +36,7 @@
 
 <script>
 import moment from "moment";
-import VPanelUser from "@/components/panels/v-panel-user";
-
 export default {
-  components: {
-    VPanelUser
-  },
   data: () => ({
     year: moment().year()
   })

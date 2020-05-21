@@ -1,27 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Dashboard from '../views/Dashboard.vue'
+import AuthRoutes from '../modules/Auth/Routes/index'
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/register',
-    name: 'Register',
-    component: () => import('@/views/Register.vue'),
-    meta: { layout: "empty" },
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: () => import('@/views/Login.vue'),
-    meta: { layout: "empty" },
-  },
-  {
-    path: '/',
-    name: 'Dashboard',
-    component: Dashboard
-  }
+  ...AuthRoutes
 ]
 
 const router = new VueRouter({
