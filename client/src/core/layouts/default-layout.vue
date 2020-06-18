@@ -34,16 +34,12 @@
   </v-app>
 </template>
 
-
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+<script>
 import moment from "moment";
-
-const default_layout = "empty";
-
-@Component
-export default class DefaultLayout extends Vue {
-  private year: number = moment().year();
-}
+export default {
+  data: () => ({
+    year: moment().year()
+  })
+};
 </script>
 
