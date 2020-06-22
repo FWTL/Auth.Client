@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-import AuthRoutes from "@/modules/Auth/Routes/index.js";
+import AuthRoutes from "@/modules/Auth/Routes/index";
 
 Vue.use(VueRouter)
 

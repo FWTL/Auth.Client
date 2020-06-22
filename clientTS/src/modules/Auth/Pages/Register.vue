@@ -39,8 +39,6 @@
 </template>
 
 <script>
-import { RegisterUser } from "@/api/user/src/index";
-
 export default {
   data: () => ({
     email: "",
@@ -48,15 +46,14 @@ export default {
     repeatPassword: ""
   }),
   methods: {
-    async onSubmit(event, form) {
-      var registerUser = new RegisterUser();
-      registerUser.email = this.email;
-      registerUser.password = this.password;
-      registerUser.repeatPassword = this.repeatPassword;
-
-      await this.$store.dispatch("auth/register", { registerUser, form });
-      this.$router.push("/login");
-    }
+    // async onSubmit(event, form) {
+    //   var registerUser = new RegisterUser();
+    //   registerUser.email = this.email;
+    //   registerUser.password = this.password;
+    //   registerUser.repeatPassword = this.repeatPassword;
+    //   await this.$store.dispatch("auth/register", { registerUser, form });
+    //   this.$router.push("/login");
+    // }
   }
 };
 </script>

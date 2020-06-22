@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <v-content class="accent">
+    <v-main class="accent">
       <slot />
-    </v-content>
+    </v-main>
   </v-app>
 </template>

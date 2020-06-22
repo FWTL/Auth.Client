@@ -34,12 +34,9 @@
   </v-app>
 </template>
 
-
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import moment from "moment";
-
-const default_layout = "empty";
 
 @Component
 export default class DefaultLayout extends Vue {
