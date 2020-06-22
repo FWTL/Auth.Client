@@ -19,10 +19,10 @@ import { Component, Prop, Watch, Vue } from "vue-property-decorator";
 
 @Component
 export default class VTextFieldValidation extends Vue {
-  @Prop() readonly rules: string = "";
+  @Prop() readonly rules: string;
   @Prop() value: any;
 
-  private innerValue: any;
+  private innerValue: any = "";
   private required = "";
 
   @Watch("value")

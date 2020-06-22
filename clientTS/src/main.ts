@@ -5,12 +5,13 @@ import store from "./store";
 import vuetify from "./plugins/vuetify";
 
 import { ValidationProvider, ValidationObserver } from "vee-validate";
+import ValidationModule from "./plugins/ValidatorsModule"
 
-import VOverlayProcessing from "./core/components/v-card-form.vue"
+import VOverlayProcessing from "./core/components/v-overlay-processing.vue"
 import VTextFieldValidation from "./core/components/v-text-field-validation.vue";
 import VCardForm from "./core/components/v-card-form.vue";
 
-//import AuthModule from "./modules/Auth/AuthModule"
+import AuthModule from "./modules/Auth/AuthModule"
 
 Vue.config.productionTip = false;
 
@@ -27,7 +28,8 @@ Vue.component("v-overlay-processing", VOverlayProcessing);
 Vue.component("v-text-field-validation", VTextFieldValidation);
 Vue.component("v-card-form", VCardForm);
 
-//new AuthModule().install();
+new ValidationModule().install();
+new AuthModule().install();
 
 new Vue({
   router,

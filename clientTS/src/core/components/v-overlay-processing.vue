@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-fade-transition>
+    <!-- <v-fade-transition>
       <v-overlay v-if="$store.state.processing" absolute color="fade">
         <v-progress-circular color="primary" :size="70" :opacity="0.1" :width="7" indeterminate />
       </v-overlay>
@@ -13,7 +13,7 @@
           <v-btn color="primary" center @click="onClose">Ok</v-btn>
         </div>
       </v-overlay>
-    </v-fade-transition>
+    </v-fade-transition> -->
   </div>
 </template>
 

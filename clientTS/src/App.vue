@@ -1,7 +1,7 @@
 <template>
-  <empty-layout>
-    <v-overlay-processing></v-overlay-processing>
-  </empty-layout>
+  <component :is="layout">
+    <router-view />
+  </component>
 </template>
 
 <script lang="ts">
@@ -12,7 +12,7 @@ const defaultLayout = "empty";
 @Component
 export default class App extends Vue {
   get layout(): string {
-      return "empty-layout";
+      return (this.$route.meta.layout || defaultLayout) + "-layout";
   }
 
   created() {
