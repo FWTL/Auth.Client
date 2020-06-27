@@ -7,7 +7,7 @@ export const actions: ActionTree<unknown, unknown> = {
     console.log(registerUser);
     const api = new UsersApi();
     await api.usersPost(registerUser);
-  },
+  }
 };
 
 // // import AuthApi from "@/services/auth.api.js";

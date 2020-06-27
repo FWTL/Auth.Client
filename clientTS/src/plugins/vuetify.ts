@@ -6,11 +6,11 @@ Vue.use(Vuetify);
 
 export default new Vuetify({
   icons: {
-    iconfont: "mdi",
+    iconfont: "mdi"
   },
   theme: {
     options: {
-      customProperties: true,
+      customProperties: true
     },
     themes: {
       light: {
@@ -21,8 +21,8 @@ export default new Vuetify({
         info: "#2196F3",
         success: "#4CAF50",
         warning: "#FFC107",
-        fade: "#333",
-      },
-    },
-  },
+        fade: "#333"
+      }
+    }
+  }
 });

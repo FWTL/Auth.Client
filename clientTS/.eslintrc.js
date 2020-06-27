@@ -19,7 +19,7 @@ module.exports = {
     "prettier/prettier": [
       "warn",
       {
-        trailingComma: "es5",
+        trailingComma: "none",
         printWidth : 120
       },
     ],

@@ -6,7 +6,7 @@ import { required, email, min, confirmed } from "vee-validate/dist/rules";
 export default class ValidatorsModule {
   public install(): void {
     const config = {
-      mode: "eager",
+      mode: "eager"
     };
     configure(config);
 
@@ -16,17 +16,17 @@ export default class ValidatorsModule {
     extend("confirmed", {
       ...confirmed,
       params: [...confirmed.params, "targetName"],
-      message: "Value does not match {targetName}",
+      message: "Value does not match {targetName}"
     });
 
     extend("email", {
       ...email,
-      message: "Must be a valid email",
+      message: "Must be a valid email"
     });
 
     extend("required", {
       ...required,
-      message: "This field is required",
+      message: "This field is required"
     });
   }
 }

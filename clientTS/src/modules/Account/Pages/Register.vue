@@ -47,7 +47,7 @@ export default class Register extends Vue {
     const registerUser: RegisterUser = {
       email: this.email,
       password: this.password,
-      repeatPassword: this.repeatPassword,
+      repeatPassword: this.repeatPassword
     };
 
     await this.$store.dispatch(ACTIONS.REGISTER_USER, registerUser);
