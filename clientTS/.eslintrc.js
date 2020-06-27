@@ -20,7 +20,7 @@ module.exports = {
       "warn",
       {
         trailingComma: "es5",
-        printWidth : 80
+        printWidth : 120
       },
     ],
   },

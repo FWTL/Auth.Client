@@ -15,9 +15,7 @@
           <!-- <router-link :to="navigationUrl">{{ navigationText }}</router-link> -->
         </v-btn>
         <v-spacer />
-        <v-btn color="primary" @click="handleSubmit(onClick)">{{
-          saveButtonTitle
-        }}</v-btn>
+        <v-btn color="primary" @click="handleSubmit(onClick)">{{ saveButtonTitle }}</v-btn>
       </v-card-actions>
     </ValidationObserver>
   </v-card>

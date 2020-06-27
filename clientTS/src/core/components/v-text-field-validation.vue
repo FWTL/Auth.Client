@@ -9,13 +9,7 @@
     "
     :rules="rules"
   >
-    <v-text-field
-      v-model="innerValue"
-      :class="required"
-      :error-messages="errors"
-      v-bind="$attrs"
-      v-on="$listeners"
-    />
+    <v-text-field v-model="innerValue" :class="required" :error-messages="errors" v-bind="$attrs" v-on="$listeners" />
   </ValidationProvider>
 </template>
 
