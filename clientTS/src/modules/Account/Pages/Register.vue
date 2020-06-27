@@ -2,13 +2,7 @@
   <v-container class="fill-height" fluid>
     <v-row align="center" justify="center">
       <v-col cols="12" sm="8" md="4">
-        <v-card-form-navigation
-          title="Register"
-          save-button-title="Register"
-          navigation-url="/login"
-          navigation-text="Already have an account? Sign in"
-          @click="onSubmit"
-        >
+        <v-card-form title="Register" save-button-title="Register" @click="onSubmit">
           <v-text-field-validation
             v-model="email"
             label="Email"
@@ -32,28 +26,35 @@
             type="password"
             rules="required|confirmed:password,password"
           />
-        </v-card-form-navigation>
+        </v-card-form>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
-<script>
-export default {
-  data: () => ({
-    email: "",
-    password: "",
-    repeatPassword: ""
-  }),
-  methods: {
-    // async onSubmit(event, form) {
-    //   var registerUser = new RegisterUser();
-    //   registerUser.email = this.email;
-    //   registerUser.password = this.password;
-    //   registerUser.repeatPassword = this.repeatPassword;
-    //   await this.$store.dispatch("auth/register", { registerUser, form });
-    //   this.$router.push("/login");
-    // }
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+import { RegisterUser } from "@/api/fwtl/index";
+import { ACTIONS, ModuleAction } from "@/modules/Account/Store/action-types";
+
+@Component
+export default class Register extends Vue {
+  private email = "";
+  private password = "";
+  private repeatPassword = "";
+
+  public async onSubmit(): Promise<void> {
+    const registerUser: RegisterUser = {
+      email: this.email,
+      password: this.password,
+      repeatPassword: this.repeatPassword
+    };
+
+    await this.$store.dispatch(
+      ModuleAction(ACTIONS.REGISTER_USER),
+      registerUser
+    );
+    console.log("DERP");
   }
-};
+}
 </script>

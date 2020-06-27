@@ -1,7 +1,12 @@
 <template>
   <ValidationProvider
     v-slot="{ errors }"
-    :name="$attrs.label.toLowerCase().split(' ').join('')"
+    :name="
+      $attrs.label
+        .toLowerCase()
+        .split(' ')
+        .join('')
+    "
     :rules="rules"
   >
     <v-text-field
@@ -20,18 +25,18 @@ import { Component, Prop, Watch, Vue } from "vue-property-decorator";
 @Component
 export default class VTextFieldValidation extends Vue {
   @Prop() readonly rules: string;
-  @Prop() value: any;
+  @Prop() value: unknown;
 
-  private innerValue: any = "";
+  private innerValue: unknown = "";
   private required = "";
 
   @Watch("value")
-  valueChanged(newVal: any) {
+  valueChanged(newVal: unknown) {
     this.innerValue = newVal;
   }
 
   @Watch("innerValue")
-  innerValueChanged(newVal: any) {
+  innerValueChanged(newVal: unknown) {
     this.$emit("input", newVal);
   }
 

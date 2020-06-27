@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue } from "vue-property-decorator";
 import moment from "moment";
 
 @Component
@@ -43,4 +43,3 @@ export default class DefaultLayout extends Vue {
   private year: number = moment().year();
 }
 </script>
-

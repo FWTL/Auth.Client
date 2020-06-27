@@ -11,32 +11,21 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "strictPropertyInitialization" : false,
+    "strictPropertyInitialization": false,
     "resolveJsonModule": true,
-    "types": [
-      "webpack-env",
-      "vuetify"
-    ],
+    "types": ["webpack-env", "vuetify", "url"],
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
     },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
+  "typeRoots": ["src/allTypes.d.ts"],
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx", "src/plugins/ValidatorsModule.js"
+    "tests/**/*.tsx"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

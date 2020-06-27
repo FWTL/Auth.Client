@@ -15,25 +15,24 @@
           <!-- <router-link :to="navigationUrl">{{ navigationText }}</router-link> -->
         </v-btn>
         <v-spacer />
-        <v-btn color="primary" @click="handleSubmit(onClick)">{{ saveButtonTitle }}</v-btn>
+        <v-btn color="primary" @click="handleSubmit(onClick)">{{
+          saveButtonTitle
+        }}</v-btn>
       </v-card-actions>
     </ValidationObserver>
   </v-card>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class VCardForm extends Vue {
   @Prop()
-  public title : string;
+  public title: string;
 
   @Prop({ default: "Save" })
-  public saveButtonTitle : string;
-
-  private innerValue: any;
-  private required :string;
+  public saveButtonTitle: string;
 
   public onClick(): void {
     this.$emit("click", event, this.$refs.form);

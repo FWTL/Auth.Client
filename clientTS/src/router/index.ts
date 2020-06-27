@@ -1,12 +1,11 @@
 import Vue from "vue";
-import VueRouter, { RouteConfig } from "vue-router";
-import AuthRoutes from "@/modules/Auth/Routes/index";
+import VueRouter from "vue-router";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL
-})
+  mode: "history",
+  base: process.env.BASE_URL,
+});
 
-export default router
+export default router;

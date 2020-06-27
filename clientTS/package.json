@@ -5,11 +5,14 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "generate": "docker run --rm --network=\"host\" -v %cd%/src:/local openapitools/openapi-generator-cli generate -i http://host.docker.internal:5000/swagger/v1/swagger.json -g typescript-axios -o /local/api/user"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "core-js": "^3.6.5",
     "moment": "^2.27.0",
+    "url": "^0.11.0",
     "vee-validate": "^3.3.3",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",

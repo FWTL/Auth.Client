@@ -5,13 +5,13 @@ import store from "./store";
 import vuetify from "./plugins/vuetify";
 
 import { ValidationProvider, ValidationObserver } from "vee-validate";
-import ValidationModule from "./plugins/ValidatorsModule"
+import ValidationModule from "./plugins/ValidatorsModule";
 
-import VOverlayProcessing from "./core/components/v-overlay-processing.vue"
+import VOverlayProcessing from "./core/components/v-overlay-processing.vue";
 import VTextFieldValidation from "./core/components/v-text-field-validation.vue";
 import VCardForm from "./core/components/v-card-form.vue";
 
-import AuthModule from "./modules/Auth/AuthModule"
+import AccountModule from "./modules/Account/AccountModule";
 
 Vue.config.productionTip = false;
 
@@ -29,11 +29,11 @@ Vue.component("v-text-field-validation", VTextFieldValidation);
 Vue.component("v-card-form", VCardForm);
 
 new ValidationModule().install();
-new AuthModule().install();
+new AccountModule().install();
 
 new Vue({
   router,
   store,
   vuetify,
-  render: h => h(App)
+  render: h => h(App),
 }).$mount("#app");
