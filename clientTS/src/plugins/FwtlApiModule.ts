@@ -1,4 +1,3 @@
-// import { UsersApi, Configuration } from "@/api/fwtl/api"
-// import { Configuration } from '@/api/fwtl'
+import { UsersApi } from "@/api/fwtl/api";
 
-// export default new UsersApi(new Configuration)
+export const usersApi = new UsersApi({ basePath: "http://localhost:5000" });

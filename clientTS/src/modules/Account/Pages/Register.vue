@@ -51,7 +51,6 @@ export default class Register extends Vue {
     };
 
     await this.$store.dispatch(ACTIONS.REGISTER_USER, registerUser);
-    console.log("DERP");
   }
 }
 </script>

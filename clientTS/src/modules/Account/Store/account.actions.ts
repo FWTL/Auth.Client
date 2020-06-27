@@ -1,12 +1,30 @@
 import { ACTIONS } from "./action-types";
-import { ActionTree } from "vuex";
-import { RegisterUser, UsersApi } from "@/api/fwtl";
+import { MUTATIONS } from "@/store/mutation-types";
+import { ActionTree, Commit } from "vuex";
+import { RegisterUser } from "@/api/fwtl";
+import { usersApi } from "@/plugins/FwtlApiModule";
+
+const derp = async function(commit: Commit, ff: any) {
+  try {
+    commit(MUTATIONS.LOADING_STARTED);
+    const response = await ff();
+    console.log(response);
+    commit(MUTATIONS.LOADING_FINISHED);
+    console.log("A");
+  } catch (error) {
+    console.log("AAAAA");
+  }
+};
 
 export const actions: ActionTree<unknown, unknown> = {
   [ACTIONS.REGISTER_USER]: async ({ commit }, registerUser: RegisterUser) => {
-    console.log(registerUser);
-    const api = new UsersApi();
-    await api.usersPost(registerUser);
+    try {
+      commit(MUTATIONS.LOADING_STARTED);
+      await usersApi.usersPost(registerUser);
+      commit(MUTATIONS.LOADING_FINISHED);
+    } catch (error) {
+      commit(MUTATIONS.ERROR_HAS_OCCURRED, error.response.data);
+    }
   }
 };
 
