@@ -34,8 +34,8 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { RegisterUser } from "@/api/fwtl/index";
-import { ACTIONS, ModuleAction } from "@/modules/Account/Store/action-types";
+import { RegisterUser } from "../../../api/fwtl/index";
+import { ACTIONS } from "../Store/action-types";
 
 @Component
 export default class Register extends Vue {
@@ -50,7 +50,7 @@ export default class Register extends Vue {
       repeatPassword: this.repeatPassword,
     };
 
-    await this.$store.dispatch(ModuleAction(ACTIONS.REGISTER_USER), registerUser);
+    await this.$store.dispatch(ACTIONS.REGISTER_USER, registerUser);
     console.log("DERP");
   }
 }
