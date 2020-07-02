@@ -1,30 +1,12 @@
 import { ACTIONS } from "./action-types";
-import { MUTATIONS } from "@/store/mutation-types";
 import { ActionTree, Commit } from "vuex";
 import { RegisterUser } from "@/api/fwtl";
 import { usersApi } from "@/plugins/FwtlApiModule";
-
-const derp = async function(commit: Commit, ff: any) {
-  try {
-    commit(MUTATIONS.LOADING_STARTED);
-    const response = await ff();
-    console.log(response);
-    commit(MUTATIONS.LOADING_FINISHED);
-    console.log("A");
-  } catch (error) {
-    console.log("AAAAA");
-  }
-};
+import { apiHandler } from '@/helpers/helpers';
 
 export const actions: ActionTree<unknown, unknown> = {
   [ACTIONS.REGISTER_USER]: async ({ commit }, registerUser: RegisterUser) => {
-    try {
-      commit(MUTATIONS.LOADING_STARTED);
-      await usersApi.usersPost(registerUser);
-      commit(MUTATIONS.LOADING_FINISHED);
-    } catch (error) {
-      commit(MUTATIONS.ERROR_HAS_OCCURRED, error.response.data);
-    }
+    await apiHandler(commit, () => usersApi.usersPost(registerUser));
   }
 };
 

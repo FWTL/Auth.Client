@@ -1,6 +1,5 @@
 <template>
   <v-card class="elevation-12">
-    <v-overlay-processing />
     <ValidationObserver ref="form" v-slot="{ handleSubmit }">
       <v-toolbar color="primary" dark flat>
         <v-toolbar-title color="white">{{ title }}</v-toolbar-title>

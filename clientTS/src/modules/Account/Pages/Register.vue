@@ -51,6 +51,7 @@ export default class Register extends Vue {
     };
 
     await this.$store.dispatch(ACTIONS.REGISTER_USER, registerUser);
+    this.$router.push("/");
   }
 }
 </script>

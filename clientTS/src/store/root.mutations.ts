@@ -2,6 +2,7 @@ import { MutationTree } from "vuex";
 import { State } from "./root.state";
 
 import { MUTATIONS } from "./mutation-types";
+import { ErrorResponse } from "@/core/models/Response";
 
 export const mutations: MutationTree<State> = {
   [MUTATIONS.LOADING_STARTED]: (state: State) => {
@@ -12,17 +13,13 @@ export const mutations: MutationTree<State> = {
     state.processing = false;
   },
 
-  [MUTATIONS.ERROR_HAS_OCCURRED]: (state: State, payload: any) => {
-    const response = payload.response;
+  [MUTATIONS.ERROR_HAS_OCCURRED]: (state: State, payload: ErrorResponse) => {
+    console.log(payload);
 
-    if (response === undefined) {
-      state.errors.push("Unexpected error");
-      state.processing = false;
-      return;
-    }
-
-    if (response.status === 400) {
-      const errors = response.body;
+    if (payload.status === 400) {
+      payload.errors?.forEach((value: string[]) => {
+        state.errors.push(...value);
+      });
       return;
     }
 
