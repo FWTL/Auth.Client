@@ -1,12 +1,12 @@
 import { ACTIONS } from "./action-types";
 import { ActionTree, Commit } from "vuex";
-import { RegisterUser } from "@/api/fwtl";
-import { usersApi } from "@/plugins/FwtlApiModule";
+import { authApi } from "@/plugins/AuthApiModule";
 import apiHandler from "@/helpers/helpers";
+import { LoginModel } from '@/api/auth';
 
 export const actions: ActionTree<unknown, unknown> = {
-  [ACTIONS.REGISTER_USER]: async ({ commit }, registerUser: RegisterUser) => {
-    await apiHandler(commit, () => usersApi.usersPost(registerUser));
+  [ACTIONS.LOGIN_USER]: async ({ commit }, loginModel: LoginModel) => {
+    await apiHandler(commit, () => authApi.OwnerPassword(loginModel));
   }
 };
 

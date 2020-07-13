@@ -2,7 +2,7 @@
   <v-container class="fill-height" fluid>
     <v-row align="center" justify="center">
       <v-col cols="12" sm="8" md="4">
-        <v-card-form title="Register" save-button-title="Register" @click="onSubmit">
+        <v-card-form title="Login" save-button-title="Login" @click="onSubmit">
           <v-text-field-validation
             v-model="email"
             label="Email"
@@ -18,14 +18,6 @@
             type="password"
             rules="required|min:8"
           />
-
-          <v-text-field-validation
-            v-model="repeatPassword"
-            label="Repeat Password"
-            prepend-icon="mdi-lock"
-            type="password"
-            rules="required|confirmed:password,password"
-          />
         </v-card-form>
       </v-col>
     </v-row>
@@ -34,24 +26,21 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { RegisterUser } from "../../../api/fwtl/index";
 import { ACTIONS } from "../Store/action-types";
+import { LoginModel } from "../../../api/auth/index"
 
 @Component
-export default class Register extends Vue {
+export default class Login extends Vue {
   private email = "";
   private password = "";
-  private repeatPassword = "";
 
   public async onSubmit(): Promise<void> {
-    const registerUser: RegisterUser = {
-      email: this.email,
-      password: this.password,
-      repeatPassword: this.repeatPassword
+    const login: LoginModel = {
+      username: this.email,
+      password: this.password
     };
 
-    await this.$store.dispatch(ACTIONS.REGISTER_USER, registerUser);
-    this.$router.push("/Login");
+    await this.$store.dispatch(ACTIONS.LOGIN_USER, login);
   }
 }
 </script>

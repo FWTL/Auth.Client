@@ -12,6 +12,7 @@ import VTextFieldValidation from "./core/components/v-text-field-validation.vue"
 import VCardForm from "./core/components/v-card-form.vue";
 
 import AccountModule from "./modules/Account/AccountModule";
+import AuthModule from "./modules/Auth/AuthModule";
 
 Vue.config.productionTip = false;
 
@@ -30,6 +31,7 @@ Vue.component("v-card-form", VCardForm);
 
 new ValidationModule().install();
 new AccountModule().install();
+new AuthModule().install();
 
 new Vue({
   router,
